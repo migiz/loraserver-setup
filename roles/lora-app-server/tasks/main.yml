@@ -14,12 +14,12 @@
   file: path=/etc/systemd/system/lora-app-server.service.d state=directory owner=root group=root mode=0750
 
 - name: request letsencrypt certificate
-  command: letsencrypt certonly --standalone --standalone-supported-challenges http-01 --non-interactive --agree-tos -m {{ lora_app_server.tls_certificate.email }} -d {{ lora_app_server.tls_certificate.domain }} 
-  when: loraserver.tls_certificate.accept_letsencrypt_tos
+  command: letsencrypt certonly --standalone --standalone-supported-challenges http-01 --non-interactive --agree-tos -m {{ lora_app_server.tls_certificate.email }} -d {{ lora_app_server.tls_certificate.domain }}
+  when: lora_app_server.tls_certificate.accept_letsencrypt_tos
 
 - name: copy certificates
-  copy: remote_src=yes follow=yes src=/etc/letsencrypt/live/{{ loraserver.tls_certificate.domain }}/{{ item }} dest=/opt/lora-app-server/certs/{{ item }} owner=appserver group=appserver mode=0640
-  when: loraserver.tls_certificate.accept_letsencrypt_tos
+  copy: remote_src=yes follow=yes src=/etc/letsencrypt/live/{{ lora_app_server.tls_certificate.domain }}/{{ item }} dest=/opt/lora-app-server/certs/{{ item }} owner=appserver group=appserver mode=0640
+  when: lora_app_server.tls_certificate.accept_letsencrypt_tos
   with_items:
     - fullchain.pem
     - privkey.pem

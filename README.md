@@ -21,7 +21,6 @@ It will:
 
 This playbook has been tested on a [DigitalOcean.com](https://m.do.co/c/6cd86e9f1cb8)
 Ubuntu 16.04.x image. Don't have a DigitalOcean account yet? Use
-[this](https://m.do.co/c/6cd86e9f1cb8) link and get $10 in credits for free :-)
 
 On the machine from where you will execute this Ansible playbook, make sure
 you have a recent Ansible version installed. You can install Ansible with
